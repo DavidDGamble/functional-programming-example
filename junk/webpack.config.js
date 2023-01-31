@@ -10,10 +10,10 @@ module.exports = {
     filename: 'bundle.js',
     path: path.resolve(__dirname, 'dist')
   },
-  devServer: {
-    // contentBase: './dist'
-  },
   devtool: 'eval-source-map',
+  devServer: {               
+    // contentBase: './dist'    
+  },
   plugins: [
     new ESLintPlugin(),
     new Dotenv(),
@@ -21,20 +21,13 @@ module.exports = {
       verbose: true
     }),
     new HtmlWebpackPlugin({
-      title: 'Functinoal Programming Example',
+      title: 'Functional Programming Example',  
       template: './src/index.html',
       inject: 'body'
     })
   ],
   module: {
     rules: [
-      {
-        test: /\.css$/,
-        use: [
-          'style-loader',
-          'css-loader'
-        ]
-      },
       {
         test: /\.(gif|png|avif|jpe?g)$/,
         use: [
@@ -48,12 +41,18 @@ module.exports = {
         ]
       },
       {
-        test: /\.html$/,
+        test:/\.html$/,
         use: [
           'html-loader'
         ]
       },
-
+      {
+        test: /\.css$/,
+        use: [
+          'style-loader',
+          'css-loader'
+        ]
+      }
     ]
   }
 };
